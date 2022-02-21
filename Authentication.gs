@@ -74,7 +74,7 @@ function fetchToken (payload) {
   var url = tokurl;
   var headers = {
     'Accept': tokenFormat,
-    'Authorization' : 'Bearer LWL4xvgQguL_i7FWxQpxYMUpv7U'
+    'Authorization' : 'Bearer '
   };
 
   var new_url = url.addQuery(payload);
