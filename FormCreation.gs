@@ -1,3 +1,5 @@
+var editors = []; //add here email addresses to automatically add editors to the generated Google Forms
+
 function createNewForm() {
   getConfiguration();
   showLoderSidebar(true);
@@ -18,6 +20,7 @@ function createNewForm() {
     }
   }
   //showLoderSidebar(false);
+  addEditors(form,editors);
   var output = buildHTML("<p>Google Form Successfully created</p><br><a class='button' target='_blank' href='"+form.getPublishedUrl()+"' onclick='google.script.host.close()' >Open Google Form</a>");
   showAlert(output);
   //openNewTab(form.getEditUrl());
@@ -38,4 +41,10 @@ function openNewTab(url){
   var userInterface = HtmlService.createHtmlOutput(html);
   SpreadsheetApp.getUi().showModalDialog(userInterface, 'Open Tab');
 
+}
+
+function addEditors(form, emails){
+  for (var i in emails) {
+    form.addEditor(emails[i]);
+  }
 }
